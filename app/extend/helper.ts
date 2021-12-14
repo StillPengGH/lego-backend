@@ -1,0 +1,23 @@
+/**
+ * @description helper对象 扩展
+ * @author still
+ */
+import { Context } from 'egg'
+
+interface RespType {
+	ctx: Context
+	res?: any
+	msg?: string
+}
+
+export default {
+	// 成功响应方法
+	success({ ctx, res, msg }: RespType) {
+		ctx.body = {
+			error: 0,
+			data: res ? res : null,
+			message: msg ? msg : '请求成功',
+		}
+		ctx.status = 200
+	},
+}
